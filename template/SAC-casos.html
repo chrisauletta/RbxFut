@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fad Crm</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+       <!--CUSTOM BASIC STYLES-->
+    <link href="assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <script language="javascript">
+        // Função responsável por inserir linhas na tabela
+        function preencher() {
+
+            // Captura a referência da tabela com id “minhaTabela”
+            var table = document.getElementById("cliente");
+            // Captura a quantidade de linhas já existentes na tabela
+            var numOfRows = table.rows.length;
+            // Captura a quantidade de colunas da última linha da tabela
+            var numOfCols = table.rows[numOfRows-1].cells.length;
+
+            // Insere uma linha no fim da tabela.
+            var newRow = table.insertRow(numOfRows);
+ 			
+
+                // Insere uma coluna na nova linha 
+                newCell = newRow.insertCell(0);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = " <a onclick='text();'>#</a>";
+                // Insere uma coluna na nova linha 
+                newCell = newRow.insertCell(0);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "25/10/2016";
+         		newCell = newRow.insertCell(0);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "01/09/2016";
+               newCell = newRow.insertCell(0);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "Quebra de brinquedo";
+               newCell = newRow.insertCell(0);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "Ativo";
+                 newCell = newRow.insertCell(0);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "Media";
+                 newCell = newRow.insertCell(0);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "230";
+                     
+        }
+
+        function text () {
+        	var a = document.getElementById("textA").value;
+
+        	a = "AAAAAAAAAAAAAA";
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"> <img src="assets/img/logo.png" height="75" width="100"/>Happy Way</a>
+            	
+            </div>
+
+            <div class="header-right">
+
+  
+             <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+
+            </div>
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                       <li>
+                        <div class="user-img-div">
+
+                            <div class="inner-text">
+                                Usuario: Luiz Otavio
+                            <br />
+                                <small>Departamento: Logistica</small>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
+                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                    </li>
+                     <li>
+                        <a href="SAC.html"><i class="fa fa-yelp "></i>SAC <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                             <li>
+                                <a href="SAC.html"><i class="fa fa-search "></i>Buscar</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-level-down"></i>Cadastrar / Editar<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                            <li>
+                                <a href="SAC-pessoaF.html"><i class="fa fa-male "></i>Pessoa Fisica</a>
+                            </li>
+                             <li>
+                                <a href="SAC-pessoaJ.html"><i class="fa fa-suitcase"></i>Pessoa Juridica</a>
+                            </li>
+                            </ul>
+                             </li>
+                             <li>
+                                <a href="SAC-casos.html"><i class="fa fa-send "></i>Casos</a>
+                            </li>      
+                        </ul>
+                    </li>   
+				</ul>
+                
+               <!-- /. FINAL LINHA -->
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+                <!--  Inicio do conteudo  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+              
+       <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">Casos</h1>
+                        <h1 class="page-subhead-line">Area para buscar hisrico de casos dos cliente</h1>
+
+                    </div>
+                </div>
+
+           <div class="row">
+           <div class="col-md-8">
+        <div class="panel panel-default">
+                    <div class="panel-heading">
+                            Busca
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table id="cliente" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Prioridade</th>
+                                            <th>Status</th>
+                                            <th>Assunto</th>
+                                            <th>Data Abertura</th>
+                                            <th>Data Fechamento</th>
+                                            <th>Manifesto</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="panel panel-info">
+                        <div class="panel-heading">
+                        Manifesto
+                        </div>
+                        <div class="panel-body">
+                         <label>Descriçao do caso</label>
+                              <textarea id="textA" class="form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                             <!--Formulario-->
+                                     <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="panel panel-info">
+                
+                        <div class="panel-body">
+                            <form role="form">
+                                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#home" data-toggle="tab">Fisico</a>
+                                </li>
+                                <li class=""><a href="#profile" data-toggle="tab">Juridico</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="home">
+                                 <div class="form-group">
+                                            <label>Nome:</label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                            <div class="form-group">
+                                            <label>CPF:</label>
+                                            <input class="form-control" type="password">
+                                        </div>
+                                 <button type="button" class="btn btn-info" onclick="preencher();"">Procurar</button>
+
+                                </div>
+                                <div class="tab-pane fade" id="profile">
+                                <div class="form-group">
+                                            <label>Razao Social:</label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                            <div class="form-group">
+                                            <label>CNPJ:</label>
+                                            <input class="form-control" type="password">
+                                        </div>
+                                    <button type="button" class="btn btn-info" onclick="preencher();"">Procurar</button>
+
+                                </div>
+                            </div>
+                        </div>
+                      </div>  
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+        </div>
+    </div>
+    <!-- /. WRAPPER  -->
+
+    <div id="footer-sec">
+  
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    
+
+</body>
+</html>
