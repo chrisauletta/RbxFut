@@ -1,8 +1,6 @@
 <?php
-require_once "Main.php";
+require_once "../model/TimeDAO.php";
 session_start();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +8,7 @@ session_start();
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rbx Fut</title>
+    <title>Auto Unity</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -23,8 +21,6 @@ session_start();
 
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
-
 </head>
 <body>
 <div id="wrapper">
@@ -36,7 +32,7 @@ session_start();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="showjogador.php" > <h2>Rbx Fut</h2></a>
+            <a class="navbar-brand" href="showjogador.php" > <h2>Auto Unity</h2></a>
 
         </div>
 
@@ -86,8 +82,8 @@ session_start();
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line">Escalar Time</h1>
-                    <h1 class="page-subhead-line "><?php echo $_GET["result"];?></h1>
+                    <h1 class="page-head-line">Monitoramento</h1>
+                    <h1 class="page-subhead-line">Status do seu veiculo</h1>
 
                 </div>
             </div>
@@ -97,36 +93,51 @@ session_start();
                     Status
                 </div>
                 <div class="panel-body">
+                    <div class="table-responsive">
+                        <table id="cliente" class="table table-striped table-bordered table-hover" style="width: 550px">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome Time</th>
+                            </tr>
+                            </thead>
 
-                        <h3><?php
-                        $x = new Main();
-                       $x->play($_GET['t1'], $_GET['t2']);
-                        ?></h3>
+                            <?php
+                            $x = new TimeDAO();
+                            $z = $x->lista();
+                            foreach ($x->lista() as $tim){?>
+                                <tr>
+                                    <td><?php echo $tim['NOME_TIME']?></td>
+
+                                    <td> <a class="btn btn small" href="jogo.php?t1=<?php echo $tim['ID_TIME']."&t2=". $_SESSION['time'];?>" role="button">
+                                            <button type="button" class="btn btn-danger">Tirar</button></a></td>
+                                </tr>
+                            <?php } ?>
+                        </table>
+
                     </div>
                 </div>
             </div>
+
+            <!-- /. Final do conteudo  -->
         </div>
-
-        <!-- /. Final do conteudo  -->
+        <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. PAGE WRAPPER  -->
-</div>
-<!-- /. WRAPPER  -->
+    <!-- /. WRAPPER  -->
 
-<!-- /. FOOTER  -->
-<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-<!-- JQUERY SCRIPTS -->
-<script src="assets/js/jquery-1.10.2.js"></script>
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="assets/js/bootstrap.js"></script>
-<!-- METISMENU SCRIPTS -->
-<script src="assets/js/jquery.metisMenu.js"></script>
-<!-- CUSTOM SCRIPTS -->
-<script src="assets/js/custom.js"></script>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
 
-<script src="assets/plugins_graficos/raphael/raphael.min.js"></script>
+    <script src="assets/plugins_graficos/raphael/raphael.min.js"></script>
 
 
 </body>
 </html>
-

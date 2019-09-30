@@ -1,9 +1,4 @@
 <?php
-class testejs
-{
-    public static function salva($x)
-    {
-        echo $x;
-        return  header("Location: showjogador.php");
-    }
-}
+require_once "Main.php";
+$z = new Main();
+$z->play(1,2);

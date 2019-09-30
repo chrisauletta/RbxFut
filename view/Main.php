@@ -3,12 +3,23 @@ require_once "../model/TimeJogDAO.php";
 require_once "../model/JogadorDAO.php";
 require_once "../controller/Jogador.php";
 require_once "../controller/Time.php";
+require_once "../model/TimeDAO.php";
 
+
+class Main{
+
+    public static function play($idtime1, $idtime2){
+
+$tn = new TimeDAO();
+$nomet1 = $tn->nomeT($idtime1)->NOME_TIME;
+$nomet2 = $tn->nomeT($idtime2)->NOME_TIME;
+
+echo "COMEÇA O JOGO ". $nomet1 ." VS ". $nomet2 . "<br><br>";
 $jog = new Jogador;
 $time = new JogadorDAO;
 
-$time1 = $time->listarT(1);
-$time2 = $time->listarT(2);
+$time1 = $time->listarT($idtime1);
+$time2 = $time->listarT($idtime2);
 
 //while($i <= count($time)){
 //
@@ -67,7 +78,7 @@ do {
                     echo "GOOOLL <br> <br>";
                     $placartime1++;
                     $bola = $time2[$meia2];
-                    echo "STAR FC " . $placartime1 . " ------ RUNN FC " . $placartime2 . "<br>";
+                    echo $nomet1." ". $placartime1 . " ------". $nomet2 ." ". $placartime2 . "<br>";
                     echo "RECOMESSA O JOGO <br> <br>";
                 } else {
                     $bola = $time2[$zag2];
@@ -120,7 +131,7 @@ do {
                 $bola = $time1[$meia1];
                 $posse = 1;
 
-                echo "STAR FC " . $placartime1 . " ------ RUNN FC " . $placartime2 . "<br>";
+                echo $nomet1." ". $placartime1 . " ------". $nomet2 ." ". $placartime2 . "<br>";
                 echo "RECOMESSA O JOGO <br> <br>";
 
             } else {
@@ -144,12 +155,8 @@ do {
 $i++;
 }while($i < 20 );
 
-echo "STAR FC " . $placartime1 . " ------ RUNN FC " . $placartime2;
+        echo $nomet1." ". $placartime1 . " ------". $nomet2 ." ". $placartime2 . "<br>";
+    }
+}
 
-//echo $time[1]->getID();
-//if ($jog->Passe($time[1]->getHabilidade())){
-//    echo "foi lindo";
-//}else{
-//    echo "nao foi";
-//}
 ?>

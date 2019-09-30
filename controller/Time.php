@@ -12,7 +12,7 @@ class Time
 
 
     /**
-     * Time constructor.
+     * TimeDAO constructor.
      * @param $nome
      */
 

@@ -2,11 +2,11 @@
 
 class TimeJogDAO{
 
-    public static function salvar($g){
+    public static function salvar($t, $j){
         //$g = $_POST["habilidade"];
-        echo $g;
-        if (isset($g)) {
-            $sql = "INSERT INTO `TIME_JOG`(`ID_TIME`, `ID_JOGADOR`) VALUES ('1',$g);";
+        //echo $g;
+        if (isset($j)) {
+            $sql = "INSERT INTO `TIME_JOG`(`ID_TIME`, `ID_JOGADOR`) VALUES ($t,$j);";
             $sth = Conexao::getConexao()->prepare($sql);
             if ($sth->execute()) {
                 return true;
@@ -18,10 +18,10 @@ class TimeJogDAO{
         }
     }
 
-    public static function deletar($g){
+    public static function deletar($t, $g){
         echo $g;
         if (isset($g)) {
-            $sql = " DELETE FROM TIME_JOG WHERE ID_JOGADOR = $g AND ID_TIME = 1;";
+            $sql = " DELETE FROM TIME_JOG WHERE ID_JOGADOR = $g AND ID_TIME = $t;";
             $sth = Conexao::getConexao()->prepare($sql);
             if ($sth->execute()) {
                 return true;

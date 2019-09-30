@@ -3,11 +3,12 @@ require_once "../model/TimeJogDAO.php";
 require_once "../model/JogadorDAO.php";
 require_once "../controller/Jogador.php";
 
-
+session_start();
+$t = $_SESSION['time'];
 if(isset($_GET['salva'])){
     $g = $_GET['salva'];
     $x =  new TimeJogDAO();
-    if ($x->salvar($g)){
+    if ($x->salvar($t, $g)){
         $result =  "Jogador Inserido com Sucesso";
         header("Location: showjogador.php?result=$result");
     }else{
@@ -20,7 +21,7 @@ if(isset($_GET['salva'])){
 if(isset($_GET['del'])){
     $g = $_GET['del'];
     $x =  new TimeJogDAO();
-    if ($x->deletar($g)){
+    if ($x->deletar($t, $g)){
         $result =  "Jogador Deletado com Sucesso";
         header("Location: showjogador.php?result=$result");
     }else{
@@ -84,24 +85,30 @@ $j->salva($_GET["te"]);
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                       <li>
+                    <li>
                         <div class="user-img-div">
 
                             <div class="inner-text">
+                                <?php
+                                echo "Nome: ".$_SESSION['user']. "<br> Departamento: ". $_SESSION['dpt']. "<br>ID do time: " . $_SESSION['time'];
+                                ?>
 
                             </div>
                         </div>
 
                     </li>
                     <li>
-                        <a href="showjogador.php"><i class="fa fa-dashboard "></i>Home</a>
+                        <a href="index.php"></i>Home</a>
                     </li>
-                     <li>
-                        <a href="historico.html"><i class="fa fa-yelp "></i>Historico de OS </a>
+                    <li>
+                        <a href="showjogador.php"></i>Comprar Jogador</a>
+                    </li>
+                    <li>
+                        <a href="Desafio.php"></i>Desafiar</a>
                     </li>
                 </ul>
-                
-               <!-- /. FINAL LINHA -->
+
+                <!-- /. FINAL LINHA -->
             </div>
 
         </nav>
@@ -114,7 +121,7 @@ $j->salva($_GET["te"]);
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-head-line">Escalar Time</h1>
-                        <h1 class="page-subhead-line "><?php echo $_GET["result"]?></h1>
+                        <h1 class="page-subhead-line "><?php echo $_GET["result"], $t;?></h1>
 
                     </div>
                 </div>
@@ -168,7 +175,7 @@ $j->salva($_GET["te"]);
 
                                     <?php
                                     $jog = new Jogador;
-                                    $jogs = JogadorDAO::listarT(1);
+                                    $jogs = JogadorDAO::listarT($t);
 
                                     foreach ($jogs as $jog){
                                         ?>

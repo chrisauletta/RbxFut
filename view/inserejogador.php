@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require "../model/JogadorDAO.php";
 
 if(isset($_POST['nome'])){
@@ -10,7 +10,7 @@ if(isset($_POST['nome'])){
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,24 +30,35 @@ if(isset($_POST['nome'])){
 </head>
 <body>
 <div id="wrapper">
-    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                <span class="sr-only">Menu</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="showjogador.php" > <h2>Auto Unity</h2></a>
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li>
+                    <div class="user-img-div">
 
+                        <div class="inner-text">
+                            <?php
+                            echo "Nome: ".$_SESSION['user']. "<br> Departamento: ". $_SESSION['dpt']. "<br>ID do time: " . $_SESSION['time'];
+                            ?>
+
+                        </div>
+                    </div>
+
+                </li>
+                <li>
+                    <a href="index.php"></i>Home</a>
+                </li>
+                <li>
+                    <a href="showjogador.php"></i>Comprar Jogador</a>
+                </li>
+                <li>
+                    <a href="Desafio.php"></i>Desafiar</a>
+                </li>
+            </ul>
+
+            <!-- /. FINAL LINHA -->
         </div>
 
-        <div class="header-right">
-
-
-            <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
-
-        </div>
     </nav>
     <!-- /. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
@@ -90,7 +101,7 @@ if(isset($_POST['nome'])){
 
             <div class="container" style="margin-top: 40px; width: 500px;">
 
-                <form method="post" >
+                <form method="post">
                     <input type="hidden" name="method" value="inserir">
                     <div class="form-group">
                         <label>Nome do Jogador</label>
